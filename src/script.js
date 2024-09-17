@@ -91,12 +91,15 @@ smokeGeometry.scale(1.5, 6, 1.5);
 
 // Perlin Texture
 const perlinTexture = textureLoader.load("./perlin.png");
+perlinTexture.wrapS = THREE.RepeatWrapping;
+perlinTexture.wrapT = THREE.RepeatWrapping;
 
 //Material
 const smokeMaterial = new THREE.ShaderMaterial({
   vertexShader: coffeeSmokeVertexShader,
   fragmentShader: coffeeSmokeFragmentShader,
   uniforms: {
+    uTime: new THREE.Uniform(0),
     uPerlinTexture: new THREE.Uniform(perlinTexture),
   },
 
@@ -117,6 +120,9 @@ const clock = new THREE.Clock();
 
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
+
+  // Update smoke
+  smokeMaterial.uniforms.uTime.value = elapsedTime;
 
   // Update controls
   controls.update();
