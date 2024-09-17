@@ -28,7 +28,7 @@ void main()
 
 
     //Final color
-    gl_FragColor = vec4(1.0,1.0,1.0,smoke);
+    gl_FragColor = vec4(0.4,0.3,0.2,smoke);
     #include <tonemapping_fragment>
      #include <colorspace_fragment>
 }
