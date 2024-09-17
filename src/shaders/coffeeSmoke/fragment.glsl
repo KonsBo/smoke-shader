@@ -3,8 +3,15 @@ uniform sampler2D uPerlinTexture;
 varying vec2 vUv;
 
 void main()
-{   // Smoke
-     float smoke = texture(uPerlinTexture, vUv).r;
+{   
+    //Scale and animate
+    vec2 smokeUv = vUv;
+    // We use the vUv here so we can transform it, we can't do it in the varying. 
+    smokeUv.x *=0.5;
+    smokeUv.y *=0.3;
+
+    // Smoke
+     float smoke = texture(uPerlinTexture, smokeUv).r;
     //Final color
     gl_FragColor = vec4(1.0,1.0,1.0,smoke);
     #include <tonemapping_fragment>
