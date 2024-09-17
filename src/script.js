@@ -105,7 +105,8 @@ const smokeMaterial = new THREE.ShaderMaterial({
 
   side: THREE.DoubleSide,
   transparent: true,
-  wireframe: false,
+  //   wireframe: true,
+  depthWrite: false,
 });
 
 //Mesh
